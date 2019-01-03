@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<!-- The below tag is for Annotation - Comment Bean tags to use Annotation -->
+	<!-- <context:component-scan base-package="com.capgemini.app"/> -->
+	<util:list id="members">
+		<value>Ragadeep</value>
+		<value>Bhanu</value>
+		<value>Shabzan</value>
+		<value>Nikhil</value>
+		<value>Pavan</value>
+	</util:list>
+	
+	<util:set id="city">
+		<value>Hyderabad</value>
+		<value>Chennai</value>
+		<value>Mumbai</value>
+		<value>Banglore</value>
+	</util:set>
+	
+	<util:map id="managers">
+		<entry key="Hyderabad" value="Ragadeep"/>
+		<entry key="Banglore" value="Bhanu"/>
+		<entry key="Chennai" value="Shabzan"/> 
+	</util:map>
+	<util:properties id="ipAddress" location="classpath:ipAddress.properties"></util:properties>
+	
+	<bean id="organization" class="com.capgemini.app.bean.Organization">
+		<property name="boardMembers" ref="members"></property>
+		<property name="branchManagers" ref="managers"></property>
+		<property name="cities" ref="city"></property>
+		<property name="dateOfEstablishment">
+			<bean class="java.time.LocalDate" factory-method="parse">
+				<constructor-arg value="1990-11-23"></constructor-arg>
+			</bean>
+		</property>
+		<property name="ipAddresses" ref="ipAddress"></property>
+		<property name="listed" value="yes"></property>
+		<property name="name" value="cap"></property>
+		<property name="orgId" value="142"></property>
+		<property name="shareValue" value="7800"></property>
+	</bean>
+	
+	
+</beans>
+
+
+
+
+
